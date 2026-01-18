@@ -1,0 +1,57 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: assessment-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/assessmentdb
+    username: postgres
+    password: Shareef@1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # 🔥 REDIS
+  cache:
+    type: redis
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 60000
+
+  # 🔄 KAFKA
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: assessment-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+# 🔐 JWT (MUST MATCH AUTH SERVICE)
+jwt:
+  secret: mysupersecretkeymysupersecretkey
+  expiration: 3600000
+
+# 🧵 TOPICS
+topics:
+  assessment: assessment-events
+
+# 📝 LOGGING
+logging:
+  level:
+    org.springframework.security: INFO
+    org.springframework.kafka: INFO
+    com.lms.assessment: DEBUG

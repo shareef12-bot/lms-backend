@@ -1,0 +1,26 @@
+server:
+  port: 8090  # Search service port
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lms_search
+    username: postgres
+    password: Shareef@1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+topics:
+  search: search-events
+  course: course-events   # ✅ REQUIRED (THIS FIXES THE CRASH)
+
+logging:
+  level:
+    org.springframework.kafka: INFO
+    com.lms.search: DEBUG
+

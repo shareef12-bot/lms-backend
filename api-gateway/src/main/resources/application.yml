@@ -1,0 +1,20 @@
+server:
+  port: 9000
+
+jwt:
+  secret: mysupersecretkeymysupersecretkey   # MUST MATCH AUTH SERVICE
+
+spring:
+  application:
+    name: api-gateway
+
+  servlet:
+    multipart:
+      max-file-size: 5GB
+      max-request-size: 5GB
+
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 120000
+        response-timeout: 120s

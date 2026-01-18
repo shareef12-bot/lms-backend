@@ -1,0 +1,29 @@
+server:
+  port: 8095
+
+spring:
+  application:
+    name: batch-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lms_batch_db
+    username: postgres
+    password: Shareef@1234
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  redis:
+    host: localhost
+    port: 6379
+
+logging:
+  level:
+    org.springframework.security: DEBUG

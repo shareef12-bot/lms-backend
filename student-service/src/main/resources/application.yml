@@ -1,0 +1,36 @@
+server:
+  port: 8093
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/studentdb
+    username: postgres
+    password: Shareef@1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    consumer:
+      group-id: student-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+topics:
+  user: user-events
+  student: student-events
+  trainer: trainer-events
+logging:
+  level:
+    org.springframework.kafka: INFO
+    com.lms.student: DEBUG

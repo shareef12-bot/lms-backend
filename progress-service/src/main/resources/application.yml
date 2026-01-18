@@ -1,0 +1,68 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: progress-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lms_progress
+    username: postgres
+    password: Shareef@1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # =========================
+  # 🔥 REDIS CONFIG
+  # =========================
+  cache:
+    type: redis
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 60000
+
+  # =========================
+  # 🔥 KAFKA CONFIG
+  # =========================
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: progress-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+# =========================
+# 🔥 KAFKA TOPICS
+# =========================
+topics:
+  progress: progress-events
+  content: content-events
+
+# =========================
+# 🔐 JWT CONFIG (MUST MATCH AUTH)
+# =========================
+jwt:
+  secret: mysupersecretkeymysupersecretkey
+  expiration: 3600000
+
+# =========================
+# 📝 LOGGING
+# =========================
+logging:
+  level:
+    org.springframework.kafka: INFO
+    com.lms.progress: INFO
+    org.springframework.security: INFO

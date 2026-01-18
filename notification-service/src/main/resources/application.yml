@@ -1,0 +1,36 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: notification-service
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    admin:
+      enabled: false
+
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+topics:
+  auth: auth-events
+  user: user-events
+  course: course-events
+  video: video-uploaded
+  content: content-events
+  assessment: assessment-events
+  enrollment: enrollment-events
+  progress: progress-events
+  search: search-events
+  payment: payment-events
+  file: file-uploaded     # ✅ ADDED (THIS WAS REQUIRED)
+
+logging:
+  level:
+    org.springframework.kafka: INFO
+    com.lms.notification: INFO
