@@ -80,17 +80,17 @@ public class CorsConfig {
 
         CorsConfiguration config = new CorsConfiguration();
 
-        // ✅ allow frontend (pattern-based)
+        // ✅ allow local frontend
         config.addAllowedOriginPattern("http://localhost:5173");
+
+        // ✅ allow Vercel frontend
         config.addAllowedOriginPattern("https://texora-ai-skills-client-seven.vercel.app");
 
-        // ✅ allow all headers
+        // ✅ allow all vercel preview deployments (optional but recommended)
+        config.addAllowedOriginPattern("https://*.vercel.app");
+
         config.addAllowedHeader("*");
-
-        // ✅ allow all HTTP methods
         config.addAllowedMethod("*");
-
-        // ✅ allow cookies / auth headers
         config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source =
