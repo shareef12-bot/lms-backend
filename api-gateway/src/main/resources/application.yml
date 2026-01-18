@@ -1,8 +1,8 @@
 server:
-  port: 9000
+  port: ${PORT:9000}
 
 jwt:
-  secret: mysupersecretkeymysupersecretkey   # MUST MATCH AUTH SERVICE
+  secret: ${JWT_SECRET:mysupersecretkeymysupersecretkey}   # MUST MATCH AUTH SERVICE
 
 spring:
   application:
