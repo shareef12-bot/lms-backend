@@ -18,3 +18,22 @@ spring:
       httpclient:
         connect-timeout: 120000
         response-timeout: 120s
+
+# ================= SERVICE URLS (Render + Localhost Support) =================
+services:
+  auth: ${AUTH_SERVICE_URL:http://localhost:8081}
+  user: ${USER_SERVICE_URL:http://localhost:8082}
+  course: ${COURSE_SERVICE_URL:http://localhost:8083}
+  content: ${CONTENT_SERVICE_URL:http://localhost:8083}
+  video: ${VIDEO_SERVICE_URL:http://localhost:8084}
+  notification: ${NOTIFICATION_SERVICE_URL:http://localhost:8085}
+  analytics: ${ANALYTICS_SERVICE_URL:http://localhost:8086}
+  assessment: ${ASSESSMENT_SERVICE_URL:http://localhost:8087}
+  enrollment: ${ENROLLMENT_SERVICE_URL:http://localhost:8088}
+  progress: ${PROGRESS_SERVICE_URL:http://localhost:8089}
+  search: ${SEARCH_SERVICE_URL:http://localhost:8090}
+  payment: ${PAYMENT_SERVICE_URL:http://localhost:8091}
+  file: ${FILE_SERVICE_URL:http://localhost:8092}
+  student: ${STUDENT_SERVICE_URL:http://localhost:8093}
+  attendance: ${ATTENDANCE_SERVICE_URL:http://localhost:8094}
+  batch: ${BATCH_SERVICE_URL:http://localhost:8095}
